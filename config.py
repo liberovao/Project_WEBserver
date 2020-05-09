@@ -11,11 +11,11 @@ class Config(object):
 
     SCHEDULER_API_ENABLED = True
 
-    SECRET_KEY = 'super_secret_key_for_project_00023'
+    SECRET_KEY = '67845632098111'
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-    MAIL_SERVER = 'smtp.mail.ru'
+    MAIL_SERVER = 'liberovao@yandex.ru'
 
     MAIL_USERNAME = ''
 
@@ -25,6 +25,6 @@ class Config(object):
 
     MAIL_USE_SSL = True
 
-    MAIL_SUPPRESS_SEND = False
+    MAIL_SUPPRESS_SEND = True
 
     TESTING = False
