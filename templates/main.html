@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+    <div class="container">
+       <div class="row">
+          <div class="card text-center with-s">
+             <div class="card-body">
+                <h5 class="card-title">Вход в систему</h5>
+                <p class="card-text">При аккаунте (и что не мало важно - подтвержденном!) вы сможете заказать товар.</p>
+                <div class="dropdown open">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     Авторизация
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                        <div class="login-form" id="intro">
+                            <form class="login-form--top auth_login_form" autocomplete="off" action="/" accept-charset="UTF-8" method="post">
+                              <input name="utf8" type="hidden" value="✓">
+                              <input type="hidden" name="authenticity_token" value="8xB9qrXPdiWMnsC0YDEOJDtknz9JjEU4nMgKrACZ4DLZqPtydekQyfzsZAt4/OIj6hxTrAfqSQ/eVrYuepgjQw==">
+                            <h2 class="login-form__heading">Вход</h2>
+                              <input id="auth_login_form_next" name="next" type="hidden" value="/home">
+                                  <div class="login-form__input-wrap login-form__login-wrap">
+                                    <input type="text" name="login" id="login" value="" class="login-form__input login-form__login" tabindex="1" autocomplete="off" placeholder="логин">
+                                  </div>
+                                  <div class="login-form__input-wrap login-form__password-wrap">
+                                    <input type="text" name="password" id="password" value="" tabindex="2" autocomplete="off" autocapitalize="off" class="login-form__input login-form__password login-form__password--safari" placeholder="пароль">
+                                  </div>
+
+                                  <input type="submit" name="commit" value="Войти" tabindex="3" class="login-form__submit">
+                                  <a class="login-form__forget" data-amplitude="Forgot password" data-amplitude-project="teacher_lk" tabindex="4" onclick="ga('send', 'event', 'PasswordRecoverLink', 'click', 'MainPagePasswordRecoverLinkClick');" href="/forget_password">
+                                    Вспомнить пароль</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dropdown open">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Регистрация
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                        <div class="form form--with-validation">
+                            <div class="form--centered">
+                                <div class="form__row">
+                                  <label class="form__label" for="teacher_email">
+                                    Эл. почта, ваш будущий логин для входа
+                                  </label>
+                                  <input class="form--field-text  email-verification invalid" data-rules="required|valid_email" type="email" id="email" name="email" value="">
+                                </div>
+
+                                <div class="form__row">
+                                  <label class="form__label" for="teacher_password">
+                                    Придумайте пароль
+                                  </label>
+                                  <input class="form--field-text" data-rules="required" type="password" id="password" name="password" value="">
+                                </div>
+
+                            </div>
+                                <div class="form__actions">
+                                  <input type="submit" name="commit" class="form__button" value="Зарегистрироваться">
+                                </div>
+                        </div>
+                    </div>
+                </div>
+              </div> 
+          </div>
+        </div>
+    </div>       
+{% endblock %}
