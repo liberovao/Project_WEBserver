@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+    <div class="container">
+       <div class="row">
+          <div class="card text-center with-s">
+              <div class="card-body">
+                  <h5 class="card-title">{{ W_name }}</h5>
+                  <p class="card-text">Года жизни: {{ W_age }}</p>
+                  <p class="card-text">{{ W_info }}</p>
+                  <p class="card-text">Основные работы: {{ W_work }}</p>
+                  <p class="card-text">Жанр: {{ W_genre }}</p>
+                  <p class="card-text">{{ W_opinion }}</p>
+                  <p class="card-text">
+                  <img src="{{ W_img }}" width="189" height="255" alt="{{ W_name }}">
+                  </p>
+
+
+              </div> 
+          </div>
+        </div>
+    </div>       
+{% endblock %}

@@ -8,7 +8,7 @@ from werkzeug.utils import secure_filename
 from flask_mail import Mail, Message
 from itsdangerous import URLSafeSerializer
 
-from db import db, User, update_session
+from db import db, User, db2, D_writers, update_session
 from loginform import LoginForm
 from regform import RegForm
 from config import Config
@@ -19,7 +19,8 @@ MAX_CONTENT_LENGTH_FOR_UNAUTH = 100 * 1024 * 1024
 PATH_TO_FILES = 'files'
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///info_users.db'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///info_users.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///info_writers.db'
 app.config.from_object(Config())
 db.app = app
 db.init_app(app)
@@ -56,72 +57,32 @@ def load_user(user_id):
 
 @app.route('/')
 def index():
-    return render_template('main.html', title='Автоcервис в Москве')
+    return render_template('main.html', title='Серебряный век')
 
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if current_user.is_authenticated:
-        return redirect(url_for('index'))
-    form = LoginForm()
-    if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first()
-        if user is None:
-            flash('Пользователь не найден', category='danger')
-            return redirect(url_for('registration'))
-        elif user.check_password(form.password.data) is False:
-            flash('Неверное имя пользователя или пароль', category='danger')
-            return redirect(url_for('login'))
-        elif not user.confirmed:
-            flash('Пожалуйста, проверьте вашу почту', category='danger')
-            return redirect(url_for('login'))
-        else:
-            login_user(user)
-            flash('Вход выполнен успешно', category='success')
-            return redirect(url_for('index'))
-    for errors in form.errors.values():
-        for error in errors:
-            flash(error, category='danger')
-    return render_template('login.html', form=form, title='Авторизация')
+@app.route('/info/')
+def inf_about():
+    return render_template('info.html', title='Серебряный век')
 
 
-@app.route('/logout')
-@login_required
-def logout():
-    logout_user()
-    return redirect(url_for('index'))
+@app.route('/info/<writer>')
+def inf_writer(writer):
+    D_writer = D_writers.query.get(writer)
+    name = D_writer.name
+    age = D_writer.age
+    info = D_writer.info
+    work = D_writer.work
+    genre = D_writer.genre
+    opinion = D_writer.opinion
+    img = '/static/img/' + str(D_writer.image)
+
+    return render_template('info_writer.html', title='ФИО', W_name=name, W_age=age, W_info=info, W_work=work, W_genre=genre, W_opinion=opinion, W_img=img)
 
 
-# noinspection PyArgumentList
-@app.route('/registration', methods=['GET', 'POST'])
-def registration():
-    if current_user.is_authenticated:
-        flash('Вы уже числитесь нашим пользователем!', category='danger')
-        return redirect(url_for('index'))
-    form = RegForm()
-    if form.validate_on_submit():
-        if User.query.filter_by(username=form.username.data).first() is not None:
-            flash('Имя пользователя занято', category='danger')
-            return redirect(url_for('registration'))
-        elif User.query.filter_by(email=form.email.data).first() is not None:
-            flash('Такая почта уже используется', category='danger')
-            return redirect(url_for('registration'))
-        email = form.email.data
-        confirmation_token = serializer.dumps(email, salt='token_email')
-        user = User(username=form.username.data, email=form.email.data, status='user', confirmed=False)
-        user.set_password(form.password.data)
-        update_session(user)
-        msg = Message('Подтвердите вашу регистрацию', sender='liberovao@yandex.ru',
-                      recipients=[email])
-        link = url_for('confirmation', token=confirmation_token, _external=True)
-        msg.body = 'Перейдите по этой ссылке: {}'.format(link)
-        mail.send(msg)
-        flash('Пожалуйста, подтвердите вашу почту', category='primary')
-        return redirect(url_for('login'))
-    for errors in form.errors.values():
-        for error in errors:
-            flash(error, category='danger')
-    return render_template('registration.html', form=form, title='Регистрация')
+
+@app.route('/gallery/')
+def gallery():
+    return render_template('gallery.html', title='Серебряный век')
 
 
 @app.route('/confirmation/<token>')
@@ -145,4 +106,4 @@ def check_operation_id():
 
 
 if __name__ == '__main__':
-    app.run(port=8080, host='127.0.0.1')
+    app.run(port=8080, host='localhost')

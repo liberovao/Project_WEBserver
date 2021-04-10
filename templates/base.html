@@ -61,7 +61,7 @@
         }
 
         .container {
-          max-width: 300px;
+          max-width: 800px;
           /* margin: 0 auto; */
           margin-left: auto;
           margin-right: auto;
@@ -163,8 +163,8 @@
         }
 
         .with-s {
-            width: 500px;
-            height: 200px;
+            width: 800px;
+            height: 800px;
             margin-top: 25px;
             margin-bottom: 15px;
             box-shadow: 0 0 8px rgba(39, 35, 39, 0.801);
@@ -292,6 +292,10 @@
             padding-top: 8px;
             margin-bottom: -5px;
         }
+        
+        .card {
+            background-color: rgba(255, 255, 255, 0.5)
+        }
     </style>
     <title>{% block title %}{% endblock %}</title>
 </head>
@@ -324,7 +328,7 @@
         <header>
 
             <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
-                <a class="navbar-brand" href="/">Автосервис</a>
+                <a class="navbar-brand" href="/">Стартовая</a>
                 <button
                   class="navbar-toggler"
                   type="button"
@@ -341,23 +345,13 @@
                   <ul class="navbar-nav mr-auto sidenav" id="navAccordion">
                     
                     <li class="nav-item">
-                      <a class="nav-link" href="#">Магазин</a>
+                      <a class="nav-link" href="/info">Сведения</a>
                     </li>
             
                     <li class="nav-item">
-                      <a class="nav-link" href="#">Контакты</a>
+                      <a class="nav-link" href="/gallery">Галерея</a>
                     </li>
 
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Личный кабинет
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Моя корзина</a>
-                        <a class="dropdown-item" href="#">Редактировать</a>
-                        
-                      </div>
-                    </li>
 
                 </ul>
                   <!-- <form class="form-inline ml-auto mt-2 mt-md-0"> -->
