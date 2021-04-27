@@ -9,6 +9,22 @@ from werkzeug.security import check_password_hash, generate_password_hash
 PATH_TO_FILES = 'files'
 
 db = SQLAlchemy()
+db2= SQLAlchemy()
+
+class D_writers(db2.Model):
+    id = db2.Column(db.String(25), primary_key=True)
+    name = db2.Column(db.String(254))
+    age = db2.Column(db.String(9))
+    info = db2.Column(db.Text)
+    work = db2.Column(db.Text)
+    genre = db2.Column(db.String(254))
+    opinion = db2.Column(db.Text)
+    image = db2.Column(db.String(254))
+    def __repr__(self):
+        return '<User {} {} {} {} {} {} {}>'.format(self.name, self.age, self.info, self.work, self.genre, self.opinion, self.image)
+
+
+
 
 
 class User(UserMixin, db.Model):

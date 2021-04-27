@@ -1,70 +1,108 @@
-{% extends "base.html" %}
+﻿{% extends "base.html" %}
 {% block title %}{{ title }}{% endblock %}
 {% block content %}
-    <div class="container">
-       <div class="row">
-          <div class="card text-center with-s">
-             <div class="card-body">
-                <h5 class="card-title">Вход в систему</h5>
-                <p class="card-text">При аккаунте (и что не мало важно - подтвержденном!) вы сможете заказать товар.</p>
-                <div class="dropdown open">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     Авторизация
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
-                        <div class="login-form" id="intro">
-                            <form class="login-form--top auth_login_form" autocomplete="off" action="/" accept-charset="UTF-8" method="post">
-                              <input name="utf8" type="hidden" value="✓">
-                              <input type="hidden" name="authenticity_token" value="8xB9qrXPdiWMnsC0YDEOJDtknz9JjEU4nMgKrACZ4DLZqPtydekQyfzsZAt4/OIj6hxTrAfqSQ/eVrYuepgjQw==">
-                            <h2 class="login-form__heading">Вход</h2>
-                              <input id="auth_login_form_next" name="next" type="hidden" value="/home">
-                                  <div class="login-form__input-wrap login-form__login-wrap">
-                                    <input type="text" name="login" id="login" value="" class="login-form__input login-form__login" tabindex="1" autocomplete="off" placeholder="логин">
-                                  </div>
-                                  <div class="login-form__input-wrap login-form__password-wrap">
-                                    <input type="text" name="password" id="password" value="" tabindex="2" autocomplete="off" autocapitalize="off" class="login-form__input login-form__password login-form__password--safari" placeholder="пароль">
-                                  </div>
 
-                                  <input type="submit" name="commit" value="Войти" tabindex="3" class="login-form__submit">
-                                  <a class="login-form__forget" data-amplitude="Forgot password" data-amplitude-project="teacher_lk" tabindex="4" onclick="ga('send', 'event', 'PasswordRecoverLink', 'click', 'MainPagePasswordRecoverLinkClick');" href="/forget_password">
-                                    Вспомнить пароль</a>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="dropdown open">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Регистрация
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
-                        <div class="form form--with-validation">
-                            <div class="form--centered">
-                                <div class="form__row">
-                                  <label class="form__label" for="teacher_email">
-                                    Эл. почта, ваш будущий логин для входа
-                                  </label>
-                                  <input class="form--field-text  email-verification invalid" data-rules="required|valid_email" type="email" id="email" name="email" value="">
-                                </div>
-
-                                <div class="form__row">
-                                  <label class="form__label" for="teacher_password">
-                                    Придумайте пароль
-                                  </label>
-                                  <input class="form--field-text" data-rules="required" type="password" id="password" name="password" value="">
-                                </div>
-
-                            </div>
-                                <div class="form__actions">
-                                  <input type="submit" name="commit" class="form__button" value="Зарегистрироваться">
-                                </div>
-                        </div>
-                    </div>
-                </div>
-              </div> 
-          </div>
+    <div class="blocks" >
+        <div class="block1">
+                Я, ученица десятого класса, решила отобразить
+                результаты своего индивидуального проекта
+                по теме "Экспериментальные направления поэзии
+                Серебряного века в иллюстрациях" в виде
+                информационного ресурса.
+            <p>
+                Проектная работа выполнена под руководством
+                Петрунниковой Виктории Владимировны
+            </p>
         </div>
-    </div>       
+        <div class="block2">
+            Цель проекта: создать сайт
+            для визуализации информации
+            о взаимосвязи литературных течений
+            с изобразительным искусством
+            <p>Задачи:</p>
+            <ul>
+                <li>
+                    Собрать информацию об
+                    эпохе Серебряного века
+                </li>
+                <li>
+                    Систематизировать полученные данные
+                </li>
+                <li>
+                    Преобразовать текст в иллюстрации
+                </li>
+                <li>
+                    Поместить выполненную работу на созданный сайт
+                </li>
+                <li>
+                    Представить проект научному сообществу
+                </li>
+            </ul>
+           
+        </div>
+        <div class="block3">
+            Проблематика: Нам не хватает продуктов деятельности, 
+            нацеленных на понимание большинством, а не частью общества
+           
+        </div>
+        <div class="block4">
+            <p>Ход работы: </p>
+            <ul>
+                <li>
+                    Создан макет сайта
+                </li>
+                <li>
+                    Разработан дизайн страниц
+                </li>
+                <li>
+                    На основании пунктов 1) и 2) изготовлены шаблоны
+                </li>
+                <li>
+                    Изучено творчество ярких представителей
+                    Серебряного века в литературе с целью
+                    классификации по группам на основе
+                    преобладающих движений в творчестве
+                </li>
+                <li>
+                    Результатом осмысления пункта 4)
+                    явились нарисованные изображения
+                    в авторской технике
+                </li>
+                <li>
+                    Отладка функционала и диплоинг проекта
+                    на ресурс pythonanywhere через github
+                </li>
+            </ul>
+        </div>
+        <div class="block5">
+            Использованная литература:
+            <ul>
+                <li>
+                    Поэзия Серебряного века. - Москва : Эксмо, 2019 - 672 с.
+                </li>
+                <li>
+                    Владимир Маяковский. Малое собрание сочинений. - Санкт-Петербург : Азбука, 2014 - 672 с.
+                </li>
+                <li>
+                    Head First C#, Third Edition. - Sebastopol : O'Reilly Media, 2013 - 816 c.
+                </li>
+                <li>
+                    Python. Карманный справочник. - Sebastopol : O'Reilly Media, 2019 - 320 с.
+                </li>     
+            </ul>
+        </div>
+        <div class="block6">
+           Выводы:
+            Литературные течения могут быть воплощены не только в словах и рифмах, но и
+            в виде холста, измалеванного красками. Потому что творчество отображает
+            внутренний мир автора и его эмоции различными средствами
+        </div>
+        <div class="block7">
+          При совмещении плодов искусства и современных технологий можно создать
+            уникальный продукт, позволяющий взглянуть на уже знакомые вещи по-новому!
+        </div>
+
+    </div>
+
 {% endblock %}
