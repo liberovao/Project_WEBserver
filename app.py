@@ -14,9 +14,6 @@ db.create_all()
 
 
 
-@app.route('/test')
-def hello_world():
-    return 'Hello from Flask!'
 
 @app.route('/')
 def index():
